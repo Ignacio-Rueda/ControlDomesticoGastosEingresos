@@ -29,7 +29,7 @@
         <h:form>
             <h:panelGrid columns="1">
                 <h:column>
-                    <h:commandButton value="Tipos De Movimientos" action="tiposDeMovimientos"></h:commandButton>
+                    <h:commandButton value="Tipos De Movimientos" action="tiposDeFacturas"></h:commandButton>
                 </h:column>
             </h:panelGrid>
         </h:form>
@@ -46,7 +46,7 @@
                     </h:selectOneMenu>
 
                     <h:selectOneMenu value="#{RegistroFacturasBean.factura.nombre}">
-                        <f:selectItems value="#{ManagedBeanMovimiento.listaDeMovimientos}"></f:selectItems>
+                        <f:selectItems value="#{RegistroTipoFacturaBean.listadoRegistroTipoFacturas}"></f:selectItems>
                     </h:selectOneMenu>
 
                     <span id="cantidad">

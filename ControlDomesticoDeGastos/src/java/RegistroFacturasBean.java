@@ -35,7 +35,7 @@ public class RegistroFacturasBean implements Serializable {
     //              CONSTRUCTOR
     //---------------------------------------------------------------------------------------------- 
     /**
-     * Leemos las listadoRegistroFacturas que tenemos registradas y las guardamos en la lista,
+     * Leemos las lista de RegistroFacturas que tenemos registradas y las guardamos en la lista,
  para a continuación poder escribir y no perder los cambios.
      */
     public RegistroFacturasBean() {
@@ -75,8 +75,12 @@ public class RegistroFacturasBean implements Serializable {
      * @throws NumberFormatException controlamos que sea un valor del tipo
      * numérico
      */
-    public void addFactura() throws NumberFormatException {
+    public void addFactura() throws NumberFormatException,NullPointerException {
+            
         try {
+            if(this.factura.getNombre()== null){
+                throw new NullPointerException();
+            }
             //Si la cifra contiene decimales con comas, reemplazamos por punto.
             String importeSignoPuntuacion = this.factura.getImporte();
             importeSignoPuntuacion = importeSignoPuntuacion.replace(",", ".");
@@ -102,6 +106,8 @@ public class RegistroFacturasBean implements Serializable {
             }
         } catch (NumberFormatException ex) {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "El número introducido no es válido", null + ex.getMessage()));
+        } catch (NullPointerException ex) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Debe seleccionar un tipo de factura", null + ex.getMessage()));
         }
 
     }

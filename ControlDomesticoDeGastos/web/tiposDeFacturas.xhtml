@@ -32,11 +32,19 @@ and open the template in the editor.
     </head>
     <body>
         <h:form>
+            <h:panelGrid columns="1">
+                <h:column>
+                    <h:commandButton value="Inicio" action="index"></h:commandButton>
+                </h:column>
+            </h:panelGrid>
+        </h:form>
+        
+        <h:form>
             <h:panelGrid columns="5">
-                <h:outputLabel value="Nombre del nuevo movimiento"></h:outputLabel>
-                <h:inputText value="#{ManagedBeanMovimiento.movimientoBean.nombre}" onkeyup="this.value = this.value.toUpperCase();"></h:inputText><!--Obligamos a que el texto esté siempre en mayúscula-->
-                <h:commandButton value="Registrar" action="#{ManagedBeanMovimiento.registrarMovimiento()}"></h:commandButton>
-                <h:commandButton value="Limpiar" action="#{ManagedBeanMovimiento.clear()}"></h:commandButton><!--Limpiar el cuadro de texto-->
+                <h:outputLabel value="Nombre del tipo de factura"></h:outputLabel>
+                <h:inputText value="#{RegistroTipoFacturaBean.factura}" onkeyup="this.value = this.value.toUpperCase();"></h:inputText><!--Obligamos a que el texto esté siempre en mayúscula-->
+                <h:commandButton value="Registrar" action="#{RegistroTipoFacturaBean.addTipoFactura()}"></h:commandButton>
+                <h:commandButton value="Limpiar" action="#{RegistroTipoFacturaBean.clear()}"></h:commandButton><!--Limpiar el cuadro de texto-->
             </h:panelGrid>
 
             <h:messages style="color: red;border: 1px solid red;background-color: yellow" ></h:messages><!--Para mostrar un mensaje de error, en caso de valor no válido-->
@@ -44,27 +52,22 @@ and open the template in the editor.
         <!--Mostramos todos los datos que tenemos registrados-->
         <div class="form-container">
             <h:form>
-                <h:dataTable value="#{ManagedBeanMovimiento.listaDeMovimientos}" var="movimiento" border="2" bgcolor="white">
+                <h:dataTable value="#{RegistroTipoFacturaBean.listadoRegistroTipoFacturas}" var="factura" border="2" bgcolor="white">
                     <h:column>
                         <f:facet name="header">
                             <h:outputLabel value="NOMBRE FACTURA"></h:outputLabel>
                         </f:facet>
-                        <h:outputLabel value="#{movimiento}"></h:outputLabel>                    
+                        <h:outputLabel value="#{factura}"></h:outputLabel>                    
                     </h:column>
 
                     <h:column>
-                        <h:commandLink value="Eliminar" action="#{ManagedBeanMovimiento.deleteMovimiento(movimiento)}"></h:commandLink>
+                        <h:commandButton value="Eliminar" action="#{RegistroTipoFacturaBean.deleteFactura(factura)}"></h:commandButton>
                     </h:column>
+
 
                 </h:dataTable>
             </h:form>
         </div>
-        <h:form>
-            <h:panelGrid columns="1">
-                <h:column>
-                    <h:commandButton value="Inicio" action="index"></h:commandButton>
-                </h:column>
-            </h:panelGrid>
-        </h:form>
+
     </body>
 </html>
