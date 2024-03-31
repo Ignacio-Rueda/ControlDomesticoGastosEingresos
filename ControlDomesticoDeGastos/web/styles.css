@@ -1,0 +1,120 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    background-color: #f5f5dc; /* Color beige */
+
+}
+
+/*******************************************************************************/
+/* Estilo para los botones decisión página */
+/*******************************************************************************/
+.pages-my-button {
+    background-color: #4CAF50; /* Color de fondo */
+    border: none; /* Sin borde */
+    color: white; /* Color del texto */
+    padding: 15px 32px; /* Espaciado interno */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como bloque */
+    font-size: 16px; /* Tamaño de la fuente */
+    margin: 4px 2px; /* Margen */
+    transition-duration: 0.4s; /* Duración de la transición */
+    cursor: pointer; /* Cursor apuntador */
+    border-radius: 4px; /* Borde redondeado */
+}
+
+/* Cambiar el color del botón al pasar el mouse */
+.pages-my-button:hover {
+    background-color: #45a049; /* Nuevo color de fondo */
+}
+/*******************************************************************************/
+/*Estilos establecer criterios*/
+/*******************************************************************************/
+.form-container {
+    margin: 20px; /* Margen exterior */
+}
+
+.form-container table {
+    width: 100%; /* Ancho completo */
+    border-collapse: collapse; /* Colapso de bordes */
+}
+
+.form-container table td,
+.form-container table th {
+    padding: 8px; /* Relleno interno */
+    border: 1px solid #dddddd; /* Borde */
+}
+
+.form-container table th {
+    background-color: #f2f2f2; /* Color de fondo para encabezados */
+}
+
+.form-container input[type="text"],
+.form-container select{
+    width: 100%; /* Ancho completo */
+    padding: 8px; /* Relleno interno */
+    margin-bottom: 10px; /* Margen inferior */
+}
+.anyo {
+    margin-left: 50%;
+    font-size: 35px; /* Tamaño de fuente */
+    color: #333; /* Color de texto */
+    font-weight: bold; /* Negrita */
+    /* Otros estilos que desees aplicar */
+}
+
+.form-container input[type="text"]{
+    width: 97.5%;
+}
+.form-container input[type="submit"] {
+    background-color: #4CAF50; /* Color de fondo para botón de enviar */
+    color: white; /* Color del texto */
+    padding: 12px 20px; /* Relleno interno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Borde redondeado */
+    cursor: pointer; /* Cursor apuntador */
+    margin-right: 10px;
+}
+
+.form-container input[type="submit"]:hover {
+    background-color: #45a049; /* Color de fondo al pasar el mouse */
+}
+
+/*******************************************************************************/
+/* Estilo para la tabla */
+/*******************************************************************************/
+.my-table {
+    border-collapse: collapse;
+    background-color: white;
+    width: 100%;
+}
+
+/* Estilo para las celdas */
+.my-table td, .my-table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+/* Estilo para las cabeceras de columna */
+.my-table th {
+    background-color: #f2f2f2;
+}
+
+/* Estilo para el botón Eliminar */
+.my-button {
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

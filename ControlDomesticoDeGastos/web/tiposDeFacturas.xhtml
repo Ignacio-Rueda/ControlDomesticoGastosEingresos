@@ -7,68 +7,49 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <head>
         <title>Tipos de movimientos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <style>
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                height: 100vh;
-                margin: 0;
-                background-color: #808080;
-            }
-            .form-container {
-                margin-top: 20px;
-            }
-            #anyo{
-                background-color: white;
-                border:1px solid black;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
     </head>
     <body>
-         <h1>INGRESA UNA NUEVA FACTURA.</h1>
+        <h1>INGRESA UNA NUEVA FACTURA.</h1>
         <h:form>
             <h:panelGrid columns="1">
                 <h:column>
-                    <h:commandButton value="Inicio" action="index"></h:commandButton>
+                    <h:commandButton value="Inicio" action="index" styleClass="pages-my-button"></h:commandButton>
                 </h:column>
             </h:panelGrid>
         </h:form>
-        
-        <h:form>
-            <h:panelGrid columns="5">
-                <h:outputLabel value="Nombre del tipo de factura"></h:outputLabel>
-                <h:inputText value="#{RegistroTipoFacturaBean.factura}" onkeyup="this.value = this.value.toUpperCase();"></h:inputText><!--Obligamos a que el texto esté siempre en mayúscula-->
-                <h:commandButton value="Registrar" action="#{RegistroTipoFacturaBean.addTipoFactura()}"></h:commandButton>
-                <h:commandButton value="Limpiar" action="#{RegistroTipoFacturaBean.clear()}"></h:commandButton><!--Limpiar el cuadro de texto-->
-            </h:panelGrid>
-
-            <h:messages style="color: red;border: 1px solid red;background-color: yellow" ></h:messages><!--Para mostrar un mensaje de error, en caso de valor no válido-->
-        </h:form>
-        <!--Mostramos todos los datos que tenemos registrados-->
         <div class="form-container">
             <h:form>
-                <h:dataTable value="#{RegistroTipoFacturaBean.listadoRegistroTipoFacturas}" var="factura" border="2" bgcolor="white">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputLabel value="NOMBRE FACTURA"></h:outputLabel>
-                        </f:facet>
-                        <h:outputLabel value="#{factura}"></h:outputLabel>                    
-                    </h:column>
-
-                    <h:column>
-                        <h:commandButton value="Eliminar" action="#{RegistroTipoFacturaBean.deleteFactura(factura)}"></h:commandButton>
-                    </h:column>
-
-
-                </h:dataTable>
+                    <h:inputText value="#{RegistroTipoFacturaBean.factura}" onkeyup="this.value = this.value.toUpperCase();" a:placeholder="Introduce el nombre de un nuevo tipo de factura"></h:inputText><!--Obligamos a que el texto esté siempre en mayúscula-->
+                    <h:commandButton value="Registrar" action="#{RegistroTipoFacturaBean.addTipoFactura()}"></h:commandButton>
+                    <h:commandButton value="Limpiar" action="#{RegistroTipoFacturaBean.clear()}"></h:commandButton><!--Limpiar el cuadro de texto-->
+                <h:messages style="color: red;border: 1px solid red;background-color: yellow" ></h:messages><!--Para mostrar un mensaje de error, en caso de valor no válido-->
             </h:form>
         </div>
+        <!--Mostramos todos los datos que tenemos registrados-->
+
+        <h:form>
+            <h:dataTable value="#{RegistroTipoFacturaBean.listadoRegistroTipoFacturas}" var="factura" styleClass="my-table">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputLabel value="NOMBRE FACTURA"></h:outputLabel>
+                    </f:facet>
+                    <h:outputLabel value="#{factura}"></h:outputLabel>                    
+                </h:column>
+
+                <h:column>
+                    <h:commandButton value="Eliminar" action="#{RegistroTipoFacturaBean.deleteFactura(factura)}" styleClass="my-button"></h:commandButton>
+                </h:column>
+
+
+            </h:dataTable>
+        </h:form>
+
 
     </body>
 </html>

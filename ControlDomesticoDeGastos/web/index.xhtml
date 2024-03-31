@@ -1,28 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <style>
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                height: 100vh;
-                margin: 0;
-                background-color: #808080;
-            }
-            .form-container {
-                margin-top: 20px;
-            }
-            #anyo{
-                background-color: white;
-                border:1px solid black;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
     </head>
     <body>
         <h1>BIENVENIDO</h1>
@@ -30,21 +14,21 @@
         <h:form>
             <h:panelGrid columns="2">
                 <h:column>
-                    <h:commandButton value="Mostrar Tipos De Facturas" action="tiposDeFacturas"></h:commandButton>
+                    <h:commandButton value="Mostrar Tipos De Facturas" action="tiposDeFacturas" styleClass="pages-my-button"></h:commandButton>
                 </h:column>
-                
-                 <h:column>
-                    <h:commandButton value="Mostrar Facturas por Categoría" action="facturasPorCategoria"></h:commandButton>
+
+                <h:column>
+                    <h:commandButton value="Mostrar Facturas por Categoría" action="facturasPorCategoria" styleClass="pages-my-button"></h:commandButton>
                 </h:column>
             </h:panelGrid>
         </h:form>
+
         <!--Seleccionamos los valores de lo que vamos a registrar-->
         <div class="form-container">
             <h:form>
-                <table border="1">
-                    <span id="anyo">
-                        <h:outputLabel value="#{RegistroFacturasBean.factura.anyo}"></h:outputLabel><!--Muestra el año actual-->
-                    </span>
+                <table>
+
+                   <h:outputLabel value="#{RegistroFacturasBean.factura.anyo}" styleClass="anyo"></h:outputLabel>
 
                     <h:selectOneMenu value="#{RegistroFacturasBean.factura.mes}"><!--Muestra el mes seleccionado-->
                         <f:selectItems value="#{RegistroFacturasBean.factura.listaMeses}"></f:selectItems><!--Muestra el listado de meses disponibles-->
@@ -54,9 +38,8 @@
                         <f:selectItems value="#{RegistroTipoFacturaBean.listadoRegistroTipoFacturas}"></f:selectItems>
                     </h:selectOneMenu>
 
-                    <span id="cantidad">
-                        <h:inputText value="#{RegistroFacturasBean.factura.importe}"></h:inputText>
-                    </span>
+                   <h:inputText value="#{RegistroFacturasBean.factura.importe}" a:placeholder="Introduce el importe" />
+
 
                     <h:commandButton value="Registrar" action="#{RegistroFacturasBean.addFactura()}"></h:commandButton>
                     <h:commandButton value="Limpiar importe" action="#{RegistroFacturasBean.factura.clearImporte()}"></h:commandButton><!--Limpiar el cuadro de texto-->
@@ -67,7 +50,7 @@
 
         <!--Mostramos todos los datos que tenemos registrados-->
         <h:form>
-            <h:dataTable value="#{RegistroFacturasBean.listadoRegistroFacturas}" var="factura" border="2" bgcolor="white">
+            <h:dataTable value="#{RegistroFacturasBean.listadoRegistroFacturas}" var="factura" border="2" bgcolor="white"  styleClass="my-table">
                 <h:column>
                     <f:facet name="header">
                         <h:outputLabel value="AÑO"></h:outputLabel>
@@ -97,7 +80,7 @@
                 </h:column>
 
                 <h:column>
-                    <h:commandButton value="Eliminar" action="#{RegistroFacturasBean.deleteFactura(factura)}"></h:commandButton>
+                    <h:commandButton value="Eliminar" action="#{RegistroFacturasBean.deleteFactura(factura)}" styleClass="my-button"></h:commandButton>
                 </h:column>
             </h:dataTable>
         </h:form>

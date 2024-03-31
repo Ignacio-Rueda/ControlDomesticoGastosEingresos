@@ -11,24 +11,7 @@ and open the template in the editor.
     <head>
         <title>Tipos de movimientos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <style>
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                height: 100vh;
-                margin: 0;
-                background-color: #808080;
-            }
-            .form-container {
-                margin-top: 20px;
-            }
-            #anyo{
-                background-color: white;
-                border:1px solid black;
-            }
-        </style>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
     </head>
     <body>
         <h1>SELECCIONA LA CATEGORIA DE FACTURA QUE QUIERES CONOCER</h1>
@@ -63,7 +46,7 @@ and open the template in the editor.
         <!--Mostramos todos los datos que tenemos registrados-->
         <div class="form-container">
             <h:form>
-                <h:dataTable value="#{FacturasPorCategoria.listaDatosFiltrados}" var="factura" border="2" bgcolor="white">
+                <h:dataTable value="#{FacturasPorCategoria.listaDatosFiltrados}" var="factura" styleClass="my-table">
                     <h:column>
                         <f:facet name="header">
                             <h:outputLabel value="AÑO"></h:outputLabel>
