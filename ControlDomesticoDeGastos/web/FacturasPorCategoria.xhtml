@@ -39,32 +39,58 @@ and open the template in the editor.
                 </h:column>
             </h:panelGrid>
         </h:form>
-        
-        <h:form>
-            <h:panelGrid columns="5">
-                <h:outputLabel value="Nombre del tipo de factura"></h:outputLabel>
-                <h:inputText value="#{RegistroTipoFacturaBean.factura}" onkeyup="this.value = this.value.toUpperCase();"></h:inputText><!--Obligamos a que el texto esté siempre en mayúscula-->
-                <h:commandButton value="Registrar" action="#{RegistroTipoFacturaBean.addTipoFactura()}"></h:commandButton>
-                <h:commandButton value="Limpiar" action="#{RegistroTipoFacturaBean.clear()}"></h:commandButton><!--Limpiar el cuadro de texto-->
-            </h:panelGrid>
+        <!--Seleccionar criterios de búsqueda-->
+        <div class="form-container">
+            <h:form>
+                <table border="1">
+                    <h:selectOneMenu value="#{FacturasPorCategoria.anyo}"><!--Muestra el mes seleccionado-->
+                        <f:selectItems value="#{FacturasPorCategoria.listaAnios}"></f:selectItems><!--Muestra el listado de los años registrados-->
+                    </h:selectOneMenu>
 
-            <h:messages style="color: red;border: 1px solid red;background-color: yellow" ></h:messages><!--Para mostrar un mensaje de error, en caso de valor no válido-->
-        </h:form>
+                    <h:selectOneMenu value="#{RegistroFacturasBean.factura.mes}"><!--Muestra el mes seleccionado-->
+                        <f:selectItems value="#{RegistroFacturasBean.factura.listaMeses}"></f:selectItems><!--Muestra el listado de meses disponibles-->
+                    </h:selectOneMenu>
+
+                    <h:selectOneMenu value="#{FacturasPorCategoria.nombre}">
+                        <f:selectItems value="#{FacturasPorCategoria.listaNombresFactura}"></f:selectItems>
+                    </h:selectOneMenu>
+
+                    <h:commandButton value="Localizar" action="#{RegistroFacturasBean.addFactura()}"></h:commandButton>
+                </table>
+                <h:messages style="color: red;border: 1px solid red;background-color: yellow" ></h:messages><!--Para mostrar un mensaje de error, en caso de valor no válido-->
+            </h:form>
+        </div>
         <!--Mostramos todos los datos que tenemos registrados-->
         <div class="form-container">
             <h:form>
-                <h:dataTable value="#{RegistroTipoFacturaBean.listadoRegistroTipoFacturas}" var="factura" border="2" bgcolor="white">
+                <h:dataTable value="#{FacturaPorCategoria.listaLecturaFichero}" var="factura" border="2" bgcolor="white">
                     <h:column>
                         <f:facet name="header">
-                            <h:outputLabel value="NOMBRE FACTURA"></h:outputLabel>
+                            <h:outputLabel value="AÑO"></h:outputLabel>
                         </f:facet>
-                        <h:outputLabel value="#{factura}"></h:outputLabel>                    
+                        <h:outputLabel value="#{factura.anyo}"></h:outputLabel>                    
                     </h:column>
 
                     <h:column>
-                        <h:commandButton value="Eliminar" action="#{RegistroTipoFacturaBean.deleteFactura(factura)}"></h:commandButton>
+                        <f:facet name="header">
+                            <h:outputLabel value="MES"></h:outputLabel>
+                        </f:facet>
+                        <h:outputLabel value="#{factura.mes}"></h:outputLabel>                    
                     </h:column>
 
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="NOMBRE"></h:outputLabel>
+                        </f:facet>
+                        <h:outputLabel value="#{factura.nombre}"></h:outputLabel>                    
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel value="IMPORTE"></h:outputLabel>
+                        </f:facet>
+                        <h:outputLabel value="#{factura.importe}"></h:outputLabel>                    
+                    </h:column>
 
                 </h:dataTable>
             </h:form>

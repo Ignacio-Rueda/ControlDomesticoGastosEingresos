@@ -54,7 +54,7 @@ public class RegistroFacturasBean implements Serializable {
     public List<FacturaBean> getListadoRegistroFacturas() {
         //Trato de deserializar el objeto
         try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(rutaFicheroRegistroPorFecha))) {
-            setListadoRegistroFacturas((List<FacturaBean>) entrada.readObject());
+            setListadoRegistroFacturas((List<FacturaBean>) entrada.readObject());//Una vez leemos el objeto, lo seteamos.
         } catch (FileNotFoundException ex) {
             ex.getMessage();
         } catch (IOException ex) {
