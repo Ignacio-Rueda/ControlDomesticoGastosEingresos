@@ -47,7 +47,7 @@ and open the template in the editor.
                         <f:selectItems value="#{FacturasPorCategoria.listaAnios}"></f:selectItems><!--Muestra el listado de los años registrados-->
                     </h:selectOneMenu>
 
-                    <h:selectOneMenu value="#{RegistroFacturasBean.factura.mes}"><!--Muestra el mes seleccionado-->
+                    <h:selectOneMenu value="#{FacturasPorCategoria.mes}"><!--Muestra el mes seleccionado-->
                         <f:selectItems value="#{RegistroFacturasBean.factura.listaMeses}"></f:selectItems><!--Muestra el listado de meses disponibles-->
                     </h:selectOneMenu>
 
@@ -55,7 +55,7 @@ and open the template in the editor.
                         <f:selectItems value="#{FacturasPorCategoria.listaNombresFactura}"></f:selectItems>
                     </h:selectOneMenu>
 
-                    <h:commandButton value="Localizar" action="#{RegistroFacturasBean.addFactura()}"></h:commandButton>
+                    <h:commandButton value="Localizar" action="#{FacturasPorCategoria.localizarFactura()}"></h:commandButton>
                 </table>
                 <h:messages style="color: red;border: 1px solid red;background-color: yellow" ></h:messages><!--Para mostrar un mensaje de error, en caso de valor no válido-->
             </h:form>
@@ -63,7 +63,7 @@ and open the template in the editor.
         <!--Mostramos todos los datos que tenemos registrados-->
         <div class="form-container">
             <h:form>
-                <h:dataTable value="#{FacturaPorCategoria.listaLecturaFichero}" var="factura" border="2" bgcolor="white">
+                <h:dataTable value="#{FacturasPorCategoria.listaDatosFiltrados}" var="factura" border="2" bgcolor="white">
                     <h:column>
                         <f:facet name="header">
                             <h:outputLabel value="AÑO"></h:outputLabel>

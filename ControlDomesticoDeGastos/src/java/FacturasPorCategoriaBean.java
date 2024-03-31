@@ -27,6 +27,7 @@ public class FacturasPorCategoriaBean {
     private static final File rutaFicheroRegistroPorFecha = new File("C:" + File.separator + "Ficheros" + File.separator + "contabilidad" + File.separator + "registroFacturas.dat");
     private String nombre;
     private String anyo;
+    private String mes;
     private static List<FacturaBean> listaLecturaFichero = new ArrayList<>();//Lista con los datos que actualmente tenemos registrados.
     private List<FacturaBean> listaDatosFiltrados = new ArrayList<>();//Lista con los datos filtrados, según el criterio indicado.
     private Set<String> listaAnios = new HashSet<>();//Lista con todos los años registrados hasta el momento.
@@ -64,6 +65,14 @@ public class FacturasPorCategoriaBean {
         this.anyo = anyo;
     }
 
+    public String getMes() {
+        return mes;
+    }
+
+    public void setMes(String mes) {
+        this.mes = mes;
+    }
+
     public List<FacturaBean> getListaLecturaFichero() {
         //Trato de deserializar el objeto
         try (ObjectInputStream entrada = new ObjectInputStream(new FileInputStream(rutaFicheroRegistroPorFecha))) {
@@ -83,7 +92,33 @@ public class FacturasPorCategoriaBean {
     }
 
     /**
-     * Obtenemos una lista con los criterios introducidos.
+     * Con este método podemos localizar las factura/s con los criterios
+     * introducidos.
+     *
+     * @return
+     */
+    public void localizarFactura() {
+        switch (nombre) {
+            case "TODAS":
+                for (FacturaBean factura : FacturasPorCategoriaBean.listaLecturaFichero) {
+                    //Si la factura coincide con el AÑO,MES y TODAS, la almacenamos en listaDatosFiltrados.
+                    if (factura.getAnyo().equals(anyo) && factura.getMes().equals(mes)) {
+                        listaDatosFiltrados.add(factura);
+                    }
+                }
+                break;
+            default:
+                for (FacturaBean factura : FacturasPorCategoriaBean.listaLecturaFichero) {
+                    //Si la factura coincide con el AÑO,MES y NOMBRE, la almacenamos en listaDatosFiltrados.
+                    if (factura.getAnyo().equals(anyo) && factura.getMes().equals(mes) && factura.getNombre().equals(nombre)) {
+                        listaDatosFiltrados.add(factura);
+                    }
+                }
+        }
+    }
+
+    /**
+     * Obtenemos la lista con los criterios introducidos.
      *
      * @return
      */
