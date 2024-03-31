@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
     <head>
         <title>TODO supply a title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -28,7 +29,7 @@
             <h:form>
                 <table>
 
-                   <h:outputLabel value="#{RegistroFacturasBean.factura.anyo}" styleClass="anyo"></h:outputLabel>
+                    <h:outputLabel value="#{RegistroFacturasBean.factura.anyo}" styleClass="anyo"></h:outputLabel>
 
                     <h:selectOneMenu value="#{RegistroFacturasBean.factura.mes}"><!--Muestra el mes seleccionado-->
                         <f:selectItems value="#{RegistroFacturasBean.factura.listaMeses}"></f:selectItems><!--Muestra el listado de meses disponibles-->
@@ -38,7 +39,7 @@
                         <f:selectItems value="#{RegistroTipoFacturaBean.listadoRegistroTipoFacturas}"></f:selectItems>
                     </h:selectOneMenu>
 
-                   <h:inputText value="#{RegistroFacturasBean.factura.importe}" a:placeholder="Introduce el importe" />
+                    <h:inputText value="#{RegistroFacturasBean.factura.importe}" a:placeholder="Introduce el importe" />
 
 
                     <h:commandButton value="Registrar" action="#{RegistroFacturasBean.addFactura()}"></h:commandButton>

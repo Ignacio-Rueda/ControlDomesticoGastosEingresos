@@ -4,6 +4,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
+import org.primefaces.event.UnselectEvent;
 
 /**
  *
@@ -99,7 +103,7 @@ public class FacturaBean implements Serializable {
     public void clearImporte() {
         this.importe = "";
     }
- //----------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
 //              EQUALS & HASHCODE
 //----------------------------------------------------------------------------------------------  
 
@@ -128,7 +132,6 @@ public class FacturaBean implements Serializable {
         return true;
     }
 
-    
     @Override
     public String toString() {
         return String.format("NOMBRE FACTURA: %s MES: %s AÑO %s IMPORTE %s",
@@ -138,4 +141,15 @@ public class FacturaBean implements Serializable {
                 this.importe
         );
     }
+
+    public void onRowSelect(SelectEvent event) {
+        FacesMessage msg = new FacesMessage("Factura seleccionada", ((FacturaBean) event.getObject()).getNombre());
+        FacesContext.getCurrentInstance().addMessage("Mensaje:", msg);
+    }
+
+    public void onRowUnselect(UnselectEvent event) {
+        FacesMessage msg = new FacesMessage("Factura seleccionado", ((FacturaBean) event.getObject()).getNombre());
+        FacesContext.getCurrentInstance().addMessage("Mensaje:", msg);
+    }
+
 }
