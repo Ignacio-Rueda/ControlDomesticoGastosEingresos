@@ -25,11 +25,16 @@
         </style>
     </head>
     <body>
+        <h1>BIENVENIDO</h1>
         <!--Mostramos las distintas páginas a las que podemos dirigirnos-->
         <h:form>
-            <h:panelGrid columns="1">
+            <h:panelGrid columns="2">
                 <h:column>
-                    <h:commandButton value="Tipos De Movimientos" action="tiposDeFacturas"></h:commandButton>
+                    <h:commandButton value="Tipos De Facturas" action="tiposDeFacturas"></h:commandButton>
+                </h:column>
+                
+                 <h:column>
+                    <h:commandButton value="Facturas por Categoría" action="facturasPorCategoria"></h:commandButton>
                 </h:column>
             </h:panelGrid>
         </h:form>
